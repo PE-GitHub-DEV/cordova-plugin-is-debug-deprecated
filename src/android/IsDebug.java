@@ -16,15 +16,31 @@ public class IsDebug extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-
-        ctx = this.cordova.getActivity().getApplicationContext();
+	
+	////////////////////////////////// /* [Azentio] fix #1378944 - Add Thread Runnable */
+	   
+	cordova.getThreadPool().execute(new Runnable() {
+	    public void run() {
+	    
+	
+		
+        ctx = cordova.getActivity().getApplicationContext();
 
         if (action.equals("getIsDebug")) {
-            callbackContext.success(this.isDebug() ? 1 : 0);
+            callbackContext.success(isDebug() ? 1 : 0);
         } else {
-            return false;
+            //return false;
         }
-        return true;
+        //return true;
+        
+        
+              }
+          });
+	
+        //////////////////////////////////
+        ////////////////////////////////// /* [Azentio] fix #1378944 - Add Thread Runnable */
+	    
+	return true;
     }
 
     private boolean isDebug() {
