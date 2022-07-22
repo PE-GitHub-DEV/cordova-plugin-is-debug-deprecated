@@ -17,7 +17,7 @@ public class IsDebug extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 	
-	////////////////////////////////// /* [Azentio] fix #1378944 - Add Thread Runnable */
+	
 	   
 	cordova.getThreadPool().execute(new Runnable() {
 	    public void run() {
@@ -38,7 +38,7 @@ public class IsDebug extends CordovaPlugin {
           });
 	
         //////////////////////////////////
-        ////////////////////////////////// /* [Azentio] fix #1378944 - Add Thread Runnable */
+        
 	    
 	return true;
     }
